@@ -1,0 +1,76 @@
+pipeline {
+    agent any
+
+    environment {
+        EMAIL = "ravrade14@gmail.com"        
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Task: Build the code using a build automation tool"
+                echo "Tool: Maven"
+            }           
+        }
+        stage('Unit and Integration Tests') {
+            steps {
+                echo "Task: Run unit and integration tests"
+                echo "Tools: JUnit for unit tests, Selenium for integration tests"
+            }
+            post {
+                success {
+                    mail to: env.EMAIL,
+                    subject: "Unit and Integration Tests",
+                    body: "Unit and Integration Tests completed successfully!"
+                }
+                failure {
+                     mail to: env.EMAIL,
+                    subject: "Unit and Integration Tests",
+                    body: "Unit and Integration Tests failed!"
+                }
+            }
+        }
+        stage('Code Analysis') {
+            steps {
+                echo "Task: Integrate a code analysis tool to ensure code quality"
+                echo "Tool: SonarQube"
+            }
+        }
+        stage('Security Scan') {
+            steps {
+                echo "Task: Perform a security scan to identify vulnerabilities"
+                echo "Tool: OWASP ZAP"
+            }
+            post {
+                success {
+                    mail to: env.EMAIL,
+                    subject: "Security Scan",
+                    body: "Security Scan completed successfully!"
+                }
+                failure {
+                    mail to: env.EMAIL,
+                    subject: "Unit and Integration Tests",
+                    body: "Security Scan failed!"
+                }
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                echo "Task: Deploy the application to a staging server"
+                echo "Tool: Jenkins"
+            }
+        }         
+        stage('Integration Tests on Staging') {
+            steps {
+                echo "Task: Run integration tests on the staging environment"
+                echo "Tools: Selenium"
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                echo "Task: Deploy the application to a production server"
+                echo "Tool: Jenkins"
+            }
+        }
+    }
+}
