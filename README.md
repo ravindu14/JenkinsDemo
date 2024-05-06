@@ -7,3 +7,5 @@ The project is used to test the jenkins configurations
 Building jenkins attempt 1
 
 Building jenkins attempt 2
+
+Building jenkins attempt 3
