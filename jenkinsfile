@@ -21,12 +21,14 @@ pipeline {
                 success {
                     mail to: env.EMAIL,
                     subject: "Unit and Integration Tests",
-                    body: "Unit and Integration Tests completed successfully!"
+                    body: "Unit and Integration Tests completed successfully!",
+                    attachLog: true
                 }
                 failure {
                      mail to: env.EMAIL,
                     subject: "Unit and Integration Tests",
-                    body: "Unit and Integration Tests failed!"
+                    body: "Unit and Integration Tests failed!",
+                    attachLog: true
                 }
             }
         }
@@ -45,12 +47,14 @@ pipeline {
                 success {
                     mail to: env.EMAIL,
                     subject: "Security Scan",
-                    body: "Security Scan completed successfully!"
+                    body: "Security Scan completed successfully!",
+                    attachLog: true
                 }
                 failure {
                     mail to: env.EMAIL,
                     subject: "Unit and Integration Tests",
-                    body: "Security Scan failed!"
+                    body: "Security Scan failed!",
+                    attachLog: true
                 }
             }
         }
