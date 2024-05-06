@@ -58,9 +58,9 @@ pipeline {
                 }
                 failure {
                     emailext(
-                        to: env.EMAIL
-                        subject: "Unit and Integration Tests"
-                        body: "Security Scan failed!"
+                        to: env.EMAIL,
+                        subject: "Unit and Integration Tests",
+                        body: "Security Scan failed!",
                         attachLog: true 
                     )                                                                                  
                 }
