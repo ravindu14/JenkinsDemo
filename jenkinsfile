@@ -19,20 +19,18 @@ pipeline {
             }
             post {
                 success {
-                    emailext(
+                    emailext
                         to: env.EMAIL,
                         subject: "Unit and Integration Tests",
                         body: "Unit and Integration Tests completed successfully!",
-                        attachLog: true
-                    ) 
+                        attachLog: true                    
                 }
                 failure {
-                     emailext(
+                     emailext
                         to: env.EMAIL,
                         subject: "Unit and Integration Tests",
                         body: "Unit and Integration Tests failed!",
-                        attachLog: true
-                     )
+                        attachLog: true                     
                 }
             }
         }
@@ -49,20 +47,18 @@ pipeline {
             }
             post {
                 success {
-                    emailext(
+                    emailext
                         to: env.EMAIL,
                         subject: "Security Scan",
                         body: "Security Scan completed successfully!",
-                        attachLog: true
-                    ) 
+                        attachLog: true                    
                 }
                 failure {
-                    emailext(
+                    emailext
                         to: env.EMAIL,
                         subject: "Unit and Integration Tests",
                         body: "Security Scan failed!",
-                        attachLog: true
-                    ) 
+                        attachLog: true                    
                 }
             }
         }
