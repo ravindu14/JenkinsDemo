@@ -19,20 +19,16 @@ pipeline {
             }
             post {
                 success {
-                    emailext(
+                    mail
                         to: env.EMAIL,
                         subject: "Unit and Integration Tests",
-                        body: "Unit and Integration Tests completed successfully!",
-                        attachLog: true                    
-                    )                           
+                        body: "Unit and Integration Tests completed successfully!",                                                                    
                 }
                 failure {
-                     emailext(
+                     mail
                         to: env.EMAIL,
                         subject: "Unit and Integration Tests",
-                        body: "Unit and Integration Tests failed!",
-                        attachLog: true   
-                     )                                          
+                        body: "Unit and Integration Tests failed!",                                                                                       
                 }
             }
         }
@@ -49,20 +45,16 @@ pipeline {
             }
             post {
                 success {
-                    emailext(
+                    mail
                         to: env.EMAIL,
                         subject: "Security Scan",
-                        body: "Security Scan completed successfully!",
-                        attachLog: true
-                    )                                            
+                        body: "Security Scan completed successfully!",                                                                           
                 }
                 failure {
-                    emailext(
+                    mail
                         to: env.EMAIL,
                         subject: "Unit and Integration Tests",
-                        body: "Security Scan failed!",
-                        attachLog: true 
-                    )                                                                                  
+                        body: "Security Scan failed!",                                                                                                                         
                 }
             }
         }
